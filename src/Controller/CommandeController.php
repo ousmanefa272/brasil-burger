@@ -9,16 +9,18 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/commande')]
-final class CommandeController extends AbstractController
+class CommandeController extends AbstractController
 {
     #[Route('/', name: 'commande_index')]
-    public function index(CommandeRepository $repo): Response
+    public function index(CommandeRepository $commandeRepository): Response
     {
+        $commandes = $commandeRepository->findAll();
+
         return $this->render('commande/index.html.twig', [
-            'commandes' => $repo->findAll(),
+            'commandes' => $commandes,
         ]);
     }
 
@@ -26,7 +28,7 @@ final class CommandeController extends AbstractController
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $commande = new Commande();
-        $commande->setDate(new \DateTime());
+        $commande->setDate(new \DateTime()); 
 
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);

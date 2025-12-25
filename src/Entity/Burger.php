@@ -14,22 +14,35 @@ class Burger
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $prix = null;
+    private ?string $nom = null;
+
+    #[ORM\Column]
+    private ?float $prix = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPrix(): ?string
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function getPrix(): ?float
     {
         return $this->prix;
     }
 
-    public function setPrix(string $prix): static
+    public function setPrix(float $prix): self
     {
         $this->prix = $prix;
-
         return $this;
     }
 }

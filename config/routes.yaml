@@ -7,5 +7,74 @@
 # To list all registered routes, run the following command:
 #   bin/console debug:router
 
-controllers:
-    resource: routing.controllers
+# Routes CRUD pour Burger
+burger_index:
+    path: /burger
+    controller: App\Controller\BurgerController::index
+    methods: [GET]
+
+burger_new:
+    path: /burger/new
+    controller: App\Controller\BurgerController::new
+    methods: [GET, POST]
+
+burger_edit:
+    path: /burger/{id}/edit
+    controller: App\Controller\BurgerController::edit
+    methods: [GET, POST]
+
+burger_delete:
+    path: /burger/{id}/delete
+    controller: App\Controller\BurgerController::delete
+    methods: [POST]
+
+# Routes pour les autres entités (clients, menus, commandes, etc.)
+client_index:
+    path: /client/
+    controller: App\Controller\ClientController::index
+    methods: [GET]
+
+client_new:
+    path: /client/new
+    controller: App\Controller\ClientController::new
+    methods: [GET, POST]
+
+menu_index:
+    path: /menu/
+    controller: App\Controller\MenuController::index
+    methods: [GET]
+
+menu_new:
+    path: /menu/new
+    controller: App\Controller\MenuController::new
+    methods: [GET, POST]
+
+commande_index:
+    path: /commande/
+    controller: App\Controller\CommandeController::index
+    methods: [GET]
+
+commande_new:
+    path: /commande/new
+    controller: App\Controller\CommandeController::new
+    methods: [GET, POST]
+
+paiement_index:
+    path: /paiement/
+    controller: App\Controller\PaiementController::index
+    methods: [GET]
+
+paiement_new:
+    path: /paiement/new
+    controller: App\Controller\PaiementController::new
+    methods: [GET, POST]
+
+complement_index:
+    path: /complement/
+    controller: App\Controller\ComplementController::index
+    methods: [GET]
+
+complement_new:
+    path: /complement/new
+    controller: App\Controller\ComplementController::new
+    methods: [GET, POST]
