@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un plat{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4 text-center">Ajouter un nouveau plat</h1>
+
+    <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_label(form.nom) }}
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.prix) }}
+                    {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button class="btn btn-primary w-100">Enregistrer</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{{ path('menu_index') }}" class="btn btn-secondary">⬅ Retour au menu</a>
+    </div>
+{% endblock %}
