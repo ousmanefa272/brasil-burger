@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Burger;
+namespace App\Services;
 
 use App\Entity\Burger;
 use App\Repository\BurgerRepository;
