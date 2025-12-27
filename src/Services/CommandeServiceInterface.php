@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Commande;
+namespace App\Services;
 
 use App\Entity\Commande;
 

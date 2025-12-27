@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Complement;
+namespace App\Services;
 
 use App\Entity\Complement;
 use App\Repository\ComplementRepository;

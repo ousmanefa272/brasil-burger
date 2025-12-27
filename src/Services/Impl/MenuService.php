@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Menu;
+namespace App\Services;
 
 use App\Entity\Menu;
 use App\Repository\MenuRepository;
