@@ -1,11 +1,10 @@
 # Étape 1 : image PHP officielle avec extensions nécessaires
-FROM php:8.2-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 # Variables d'environnement
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
     APP_ENV=prod \
-    APP_DEBUG=0 \
-    SYMFONY_ALLOW_APP_DEV=0
+    APP_DEBUG=0
 
 # Installer les dépendances système nécessaires
 RUN apk add --no-cache \
@@ -37,14 +36,11 @@ WORKDIR /var/www/html
 # Copier uniquement les fichiers nécessaires pour installer les dépendances
 COPY composer.json composer.lock ./
 
-# Installer les dépendances PHP
+# Installer les dépendances PHP (sans dev)
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Copier tout le projet
 COPY . .
-
-# Générer le cache pour la prod
-RUN php bin/console cache:clear --env=prod
 
 # Exposer le port 8000
 EXPOSE 8000
